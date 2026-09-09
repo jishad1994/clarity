@@ -1,0 +1,33 @@
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold text-slate-800">
+        {{ viewDate | calendarDate: 'monthViewTitle' : 'en' }}
+    </h1>
+
+    <div class="flex gap-2">
+        <button type="button" mwlCalendarPreviousView [view]="calendarView" [(viewDate)]="viewDate"
+            class="px-2 py-1 text-sm rounded-md border border-slate-300 hover:bg-slate-50">
+            &lsaquo; Prev
+        </button>
+        <button type="button" mwlCalendarToday [(viewDate)]="viewDate"
+            class="px-2 py-1 text-sm rounded-md border border-slate-300 hover:bg-slate-50">
+            Today
+        </button>
+        <button type="button" mwlCalendarNextView [view]="calendarView" [(viewDate)]="viewDate"
+            class="px-2 py-1 text-sm rounded-md border border-slate-300 hover:bg-slate-50">
+            Next &rsaquo;
+        </button>
+    </div>
+</div>
+
+<div class="flex gap-4 text-xs text-slate-500 mb-3">
+    @for (status of statusOrder; track status) {
+    <span class="flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full inline-block" [style.background-color]="statusColors[status].primary"></span>
+        {{ status }}
+    </span>
+    }
+</div>
+
+<div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+    <mwl-calendar-month-view [viewDate]="viewDate" [events]="events()" (eventClicked)="onEventClicked($event)" />
+</div>
