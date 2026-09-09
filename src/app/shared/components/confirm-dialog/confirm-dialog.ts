@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './confirm-dialog.html',
   styleUrl: './confirm-dialog.css',
 })
-export class ConfirmDialog {}
+export class ConfirmDialog {
+  readonly title = input('Are you sure?');
+  readonly message = input('This action cannot be undone.');
+  readonly confirmLabel = input('Delete');
+
+  readonly confirm = output<void>();
+  readonly cancelRequest = output<void>();
+}

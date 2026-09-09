@@ -1,0 +1,28 @@
+
+    <a routerLink="/tasks" class="text-sm text-brand-600 hover:underline">&larr; Back to tasks</a>
+
+    @if (task(); as task) {
+      <div class="bg-white border border-slate-200 rounded-lg p-5 mt-3">
+        <div class="flex items-start justify-between gap-3">
+          <h1 class="text-xl font-semibold text-slate-800">{{ task.title }}</h1>
+          <app-status-badge [status]="task.status" />
+        </div>
+
+        <p class="text-sm text-slate-400 mt-1">Due {{ task.deadline | date: 'fullDate' }}</p>
+
+        <div class="prose prose-sm max-w-none mt-4 text-slate-700" [innerHTML]="task.description"></div>
+
+        <a
+          [routerLink]="['/tasks', task.id, 'edit']"
+          class="inline-block mt-4 text-sm px-3 py-1.5 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50"
+        >
+          Edit Task
+        </a>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-5 mt-4">
+        <app-comment-list [taskId]="task.id" />
+      </div>
+    } @else {
+      <p class="text-sm text-red-600 mt-3">Task not found.</p>
+    }

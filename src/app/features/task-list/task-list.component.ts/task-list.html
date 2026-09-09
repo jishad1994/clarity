@@ -1,0 +1,36 @@
+<div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold text-slate-800">Tasks ({{ filteredTasks().length }})</h1>
+
+    <div class="flex gap-1.5">
+        @for (option of statusFilters; track option) {
+        <button type="button" class="px-3 py-1 text-xs rounded-full border" [class]="
+              activeFilter() === option
+                ? 'bg-brand-600 border-brand-600 text-white'
+                : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+            " (click)="activeFilter.set(option)">
+            {{ option }}
+        </button>
+        }
+    </div>
+</div>
+
+@if (taskStore.loading()) {
+<p class="text-sm text-slate-500">Loading tasks…</p>
+} @else if (taskStore.error()) {
+<p class="text-sm text-red-600">{{ taskStore.error() }}</p>
+} @else if (filteredTasks().length === 0) {
+<p class="text-sm text-slate-500">No tasks match this filter.</p>
+} @else {
+<div class="grid gap-3 sm:grid-cols-2">
+    @for (task of filteredTasks(); track task.id) {
+    <app-task-card [task]="task" (view)="router.navigate(['/tasks', task.id])"
+        (edit)="router.navigate(['/tasks', task.id, 'edit'])" (delete)="pendingDeleteId.set(task.id)" />
+    }
+</div>
+}
+
+@if (pendingDeleteId(); as id) {
+<app-confirm-dialog title="Delete task"
+    message="This will permanently remove the task and its comments from this session."
+    (cancel)="pendingDeleteId.set(null)" (confirm)="confirmDelete(id)" />
+}

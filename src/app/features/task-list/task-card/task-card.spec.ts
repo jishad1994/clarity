@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StripHtml } from './strip-html';
+import { TaskCard } from './task-card';
 
-describe('StripHtml', () => {
-  let component: StripHtml;
-  let fixture: ComponentFixture<StripHtml>;
+describe('TaskCard', () => {
+  let component: TaskCard;
+  let fixture: ComponentFixture<TaskCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StripHtml],
+      imports: [TaskCard],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(StripHtml);
+    fixture = TestBed.createComponent(TaskCard);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

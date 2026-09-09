@@ -1,0 +1,35 @@
+<li class="border-l-2 border-slate-200 pl-3">
+      <div class="flex items-baseline gap-2">
+        <span class="text-sm font-medium text-slate-800">{{ comment().author }}</span>
+        <span class="text-xs text-slate-400">{{ comment().createdAt | date: 'short' }}</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-0.5">{{ comment().content }}</p>
+
+      <button
+        type="button"
+        class="text-xs text-brand-600 hover:underline mt-1"
+        (click)="replying.set(!replying())"
+      >
+        {{ replying() ? 'Cancel' : 'Reply' }}
+      </button>
+
+      @if (replying()) {
+        <div class="mt-2">
+          <app-comment-form
+            placeholder="Write a reply…"
+            submitLabel="Reply"
+            [showCancel]="true"
+            (submitted)="onReply($event)"
+            (cancel)="replying.set(false)"
+          />
+        </div>
+      }
+
+      @if (comment().replies.length > 0) {
+        <ul class="flex flex-col gap-3 mt-3">
+          @for (childComment of comment().replies; track childComment.id) {
+            <app-comment-item [comment]="childComment" (reply)="onNestedReply($event)" />
+          }
+        </ul>
+      }
+    </li>

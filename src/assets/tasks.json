@@ -1,0 +1,51 @@
+[
+  {
+    "id": "task-1",
+    "title": "Prepare quarterly report",
+    "description": "<p>Compile the <strong>Q3 financial summary</strong> and share it with the leadership team.</p><ul><li>Revenue breakdown</li><li>Expense analysis</li></ul>",
+    "deadline": "2026-09-15",
+    "status": "In Progress"
+  },
+  {
+    "id": "task-2",
+    "title": "Fix login page bug",
+    "description": "<p>Users report the <em>login button</em> becomes unresponsive on Safari after a failed attempt.</p>",
+    "deadline": "2026-09-11",
+    "status": "Pending"
+  },
+  {
+    "id": "task-3",
+    "title": "Update onboarding documentation",
+    "description": "<p>Revise the onboarding guide to reflect the new <u>account setup</u> flow.</p>",
+    "deadline": "2026-08-30",
+    "status": "Completed"
+  },
+  {
+    "id": "task-4",
+    "title": "Design new dashboard widgets",
+    "description": "<p>Create wireframes for the upcoming analytics widgets:</p><ul><li>Task velocity chart</li><li>Team workload heatmap</li></ul>",
+    "deadline": "2026-09-25",
+    "status": "Pending"
+  },
+  {
+    "id": "task-5",
+    "title": "Code review: payments module",
+    "description": "<p>Review the pull request for the new <strong>refund handling</strong> logic before merging.</p>",
+    "deadline": "2026-09-12",
+    "status": "In Progress"
+  },
+  {
+    "id": "task-6",
+    "title": "Team retrospective",
+    "description": "<p>Facilitate the sprint retrospective and document action items.</p>",
+    "deadline": "2026-09-18",
+    "status": "Pending"
+  },
+  {
+    "id": "task-7",
+    "title": "Migrate CI pipeline",
+    "description": "<p>Move the build pipeline to the new runner infrastructure.</p>",
+    "deadline": "2026-08-20",
+    "status": "Completed"
+  }
+]

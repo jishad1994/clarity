@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-4">
+    <h2 class="text-sm font-semibold text-slate-700">Comments ({{ commentCount() }})</h2>
+
+    <app-comment-form (submitted)="onNewComment($event)" />
+
+    @if (comments().length > 0) {
+    <ul class="flex flex-col gap-4 mt-1">
+        @for (comment of comments(); track comment.id) {
+        <app-comment-item [comment]="comment" (reply)="onReply($event)" />
+        }
+    </ul>
+    } @else {
+    <p class="text-sm text-slate-400">No comments yet. Be the first to add one.</p>
+    }
+</div>

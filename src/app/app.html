@@ -1,1 +1,32 @@
-<router-outlet />
+<div class="min-h-screen flex flex-col">
+      <header class="bg-white border-b border-slate-200">
+        <nav class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
+          <span class="font-semibold text-slate-800">Task Manager</span>
+          <a
+            routerLink="/tasks"
+            routerLinkActive="text-brand-700 font-medium"
+            [routerLinkActiveOptions]="{ exact: false }"
+            class="text-sm text-slate-600 hover:text-brand-700"
+          >
+            Tasks
+          </a>
+          <a
+            routerLink="/calendar"
+            routerLinkActive="text-brand-700 font-medium"
+            class="text-sm text-slate-600 hover:text-brand-700"
+          >
+            Calendar
+          </a>
+          <a
+            routerLink="/tasks/new"
+            class="ml-auto text-sm bg-brand-600 text-white px-3 py-1.5 rounded-md hover:bg-brand-700"
+          >
+            + Add Task
+          </a>
+        </nav>
+      </header>
+
+      <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-6">
+        <router-outlet />
+      </main>
+    </div>
