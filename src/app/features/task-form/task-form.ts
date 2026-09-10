@@ -1,13 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from "@angular/core";
 import { ReactiveFormsModule, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { QuillEditorComponent } from "ngx-quill";
+// import { QuillEditorComponent } from "ngx-quill";
 import { TaskStore } from "../../core/state/task.store";
 import { TASK_STATUSES } from "../../core/models/tasl.model";
 import { deadlineNotInPastValidator } from "../../core/utils/deadline.validator";
+import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
+import { ClassicEditor, Essentials, Paragraph, Bold, Italic, Underline, List } from "ckeditor5";
 @Component({
     selector: "app-task-form",
-    imports: [ReactiveFormsModule, QuillEditorComponent, RouterLink],
+    imports: [ReactiveFormsModule, CKEditorModule, RouterLink],
     templateUrl: "./task-form.html",
     styleUrl: "./task-form.css",
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,6 +21,13 @@ export class TaskForm {
     private readonly taskStore = inject(TaskStore);
 
     protected readonly statuses = TASK_STATUSES;
+    protected readonly Editor = ClassicEditor;
+
+    protected readonly editorConfig = {
+    licenseKey: "GPL",
+    plugins: [Essentials, Paragraph, Bold, Italic, Underline, List],
+    toolbar: ["undo", "redo", "|", "bold", "italic", "underline", "|", "bulletedList", "numberedList"],
+};
 
     private readonly taskId = signal<string | null>(this.route.snapshot.paramMap.get("id"));
     protected readonly isEditMode = computed(() => this.taskId() !== null);
