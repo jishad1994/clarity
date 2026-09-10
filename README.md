@@ -27,10 +27,6 @@ npm run lint    # angular-eslint
 npm test        # vitest unit tests
 ```
 
-> **Note:** `package.json` still lists `ngx-quill` and `quill` as dependencies. These were
-> used in an earlier iteration of the description editor and were replaced by CKEditor 5 (see
-> [Architecture decisions](#architecture-decisions) below). They're no longer imported anywhere
-> in the app and can be safely removed with `npm uninstall ngx-quill quill`.
 
 ## Packages used
 
@@ -45,7 +41,7 @@ npm test        # vitest unit tests
 | `angular-eslint`, `eslint`, `typescript-eslint`, `prettier` | Linting/formatting (dev only) |
 | `vitest`, `jsdom` | Unit testing (dev only) |
 
-No state management library (NgRx, MobX, etc.) is used — see below.
+
 
 ## Assumptions made
 
