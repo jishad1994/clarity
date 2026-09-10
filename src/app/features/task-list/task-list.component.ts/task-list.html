@@ -32,5 +32,5 @@
 @if (pendingDeleteId(); as id) {
 <app-confirm-dialog title="Delete task"
     message="This will permanently remove the task and its comments from this session."
-    (cancel)="pendingDeleteId.set(null)" (confirm)="confirmDelete(id)" />
+    (cancelRequest)="pendingDeleteId.set(null)" (confirm)="confirmDelete(id)" />
 }
